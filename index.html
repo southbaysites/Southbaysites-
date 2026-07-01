@@ -928,83 +928,28 @@ footer { background: var(--black); padding: 72px 80px 40px; }
         <div class="trust-item"><div class="trust-check">✓</div> Local South Bay team</div>
       </div>
     </div>
-   <div class="lead-form reveal d1">
-    <h3>Get My Free Website Audit</h3>
+   <form id="contactForm">
 
-    <form action="https://formspree.io/f/mbdvzrjr" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Your Name</label>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="First Last"
-                    required>
-            </div>
+  <input type="text" name="business" placeholder="Business Name">
 
-            <div class="form-group">
-                <label>Business Name</label>
-                <input
-                    type="text"
-                    name="business"
-                    placeholder="Your Business">
-            </div>
-        </div>
+  <input type="email" name="email" placeholder="Email" required>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>Email</label>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="you@email.com"
-                    required>
-            </div>
+  <input type="tel" name="phone" placeholder="Phone">
 
-            <div class="form-group">
-                <label>Phone</label>
-                <input
-                    type="tel"
-                    name="phone"
-                    placeholder="(310) 000-0000">
-            </div>
-        </div>
+  <input type="url" name="website" placeholder="Website">
 
-        <div class="form-group">
-            <label>
-                Current Website URL
-                <span style="font-weight:400;color:var(--gray)">
-                    (if you have one)
-                </span>
-            </label>
+  <textarea
+    name="message"
+    placeholder="Tell us about your project..."
+    required></textarea>
 
-            <input
-                type="url"
-                name="website"
-                placeholder="https://yourbusiness.com">
-        </div>
+  <button type="submit">
+    Send My Request →
+  </button>
 
-        <div class="form-group">
-            <label>
-                What are you looking for?
-                <span style="font-weight:400;color:var(--gray)">
-                    (optional)
-                </span>
-            </label>
-
-            <textarea
-                name="message"
-                placeholder="Tell us about your project..."></textarea>
-        </div>
-
-        <button
-            type="submit"
-            class="form-submit">
-            Send My Request →
-        </button>
-
-    </form>
+</form>
 </div>
 </section>
 
@@ -1081,5 +1026,50 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
+</body>
+</html>
+...
+<!-- Your existing JavaScript above -->
+
+<script>
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const data = Object.fromEntries(
+        new FormData(form).entries()
+    );
+
+    const response = await fetch("/api/contact", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(data)
+
+    });
+
+    if (response.ok) {
+
+        alert("Thank you! We'll contact you shortly.");
+
+        form.reset();
+
+    } else {
+
+        alert("Something went wrong.");
+
+    }
+
+});
+
+</script>
+
 </body>
 </html>
