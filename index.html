@@ -941,30 +941,50 @@ footer { background: var(--black); padding: 72px 80px 40px; }
         </div>
         <div class="form-group">
           <label>Business Name</label>
-          <input type="text" placeholder="Your Business">
+          <input
+    type="text"
+    name="business"
+    placeholder="Your Business"
+    required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>Email</label>
-          <input type="email" placeholder="you@email.com">
+          <input
+    type="email"
+    name="email"
+    placeholder="you@email.com"
+    required>
         </div>
         <div class="form-group">
           <label>Phone</label>
-          <input type="tel" placeholder="(310) 000-0000">
+          <input
+    type="tel"
+    name="phone"
+    placeholder="(310) 000-0000">
         </div>
       </div>
       <div class="form-group">
         <label>Current Website URL <span style="font-weight:400;color:var(--gray)">(if you have one)</span></label>
-        <input type="url" placeholder="https://yourbusiness.com">
+        <input
+    type="url"
+    name="website"
+    placeholder="https://yourbusiness.com">
       </div>
       <div class="form-group">
         <label>What are you looking for? <span style="font-weight:400;color:var(--gray)">(optional)</span></label>
-        <textarea placeholder="New website, redesign, SEO, something else..."></textarea>
+        <textarea
+    name="message"
+    placeholder="New website, redesign, SEO, something else..."></textarea>
       </div>
-      <button class="form-submit">Send My Request →</button>
+      <button
+    type="submit"
+    class="form-submit">
+    Send My Request →
+</button>
     </div>
-  </div>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -1038,6 +1058,65 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const t = document.querySelector(a.getAttribute('href'));
     if (t) t.scrollIntoView({ behavior: 'smooth' });
   });
+});
+</script>
+  <script>
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const button = form.querySelector("button");
+
+    button.disabled = true;
+    button.innerText = "Sending...";
+
+    const formData = {
+        name: form.name.value,
+        business: form.business.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        website: form.website.value,
+        message: form.message.value
+    };
+
+    try {
+
+        const response = await fetch("/api/contact", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(formData)
+
+        });
+
+        if (response.ok) {
+
+            window.location.href = "/thank-you.html";
+
+        } else {
+
+            alert("Something went wrong. Please try again.");
+
+            button.disabled = false;
+            button.innerText = "Send My Request →";
+
+        }
+
+    } catch (error) {
+
+        alert("Network error. Please try again.");
+
+        button.disabled = false;
+        button.innerText = "Send My Request →";
+
+    }
+
 });
 </script>
 </body>
