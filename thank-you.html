@@ -1,97 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You | South Bay Sites</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Thank You | South Bay Sites</title>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-        }
+<style>
 
-        .card {
-            background: white;
-            color: #1f2937;
-            padding: 60px 50px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 650px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0,0,0,.25);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .check {
-            font-size: 70px;
-            margin-bottom: 20px;
-        }
+body {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: #0f172a;
-        }
+    background:
+    linear-gradient(
+        135deg,
+        #071426 0%,
+        #0f3c5f 45%,
+        #0ea5a8 100%
+    );
 
-        p {
-            font-size: 20px;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 20px;
-        }
+    position: relative;
+}
 
-        .home-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 16px 34px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: 0.3s ease;
-        }
 
-        .home-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-    </style>
+/* Coastal glow effects */
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    top: -250px;
+    right: -200px;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(14,165,168,0.25);
+    border-radius: 50%;
+    bottom: -250px;
+    left: -200px;
+}
+
+
+/* Main Card */
+
+.card {
+
+    position: relative;
+    z-index: 2;
+
+    width: min(90%, 700px);
+
+    padding: 70px 60px;
+
+    text-align: center;
+
+    background:
+    rgba(255,255,255,0.94);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 28px;
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.25);
+
+    animation: fadeUp .7s ease;
+}
+
+
+/* Logo */
+
+.logo {
+
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+
+    color:#0f3c5f;
+
+    margin-bottom:35px;
+
+    text-transform:uppercase;
+}
+
+
+/* Check Icon */
+
+.check {
+
+    width:90px;
+    height:90px;
+
+    margin:0 auto 30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    font-size:45px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0ea5a8,
+        #2563eb
+    );
+
+    box-shadow:
+    0 15px 35px rgba(14,165,168,.35);
+
+}
+
+
+/* Text */
+
+h1 {
+
+    font-size:48px;
+
+    letter-spacing:-1px;
+
+    color:#071426;
+
+    margin-bottom:20px;
+
+}
+
+
+p {
+
+    font-size:19px;
+
+    line-height:1.7;
+
+    color:#475569;
+
+    max-width:520px;
+
+    margin:0 auto 18px;
+
+}
+
+
+strong {
+
+    color:#0f3c5f;
+
+}
+
+
+/* Button */
+
+.home-btn {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-top:25px;
+
+    padding:17px 38px;
+
+    border-radius:50px;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #0ea5a8
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.3s ease;
+
+    box-shadow:
+    0 12px 30px rgba(37,99,235,.3);
+
+}
+
+
+.home-btn:hover {
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 18px 40px rgba(37,99,235,.45);
+
+}
+
+
+
+/* Small footer */
+
+.footer {
+
+    margin-top:40px;
+
+    font-size:14px;
+
+    color:#64748b;
+
+}
+
+
+
+/* Animation */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.card{
+
+padding:50px 25px;
+
+}
+
+h1{
+
+font-size:38px;
+
+}
+
+p{
+
+font-size:17px;
+
+}
+
+}
+
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <div class="card">
 
-    <div class="check">✅</div>
 
-    <h1>Thank You!</h1>
+<div class="logo">
+South Bay Sites
+</div>
 
-    <p>
-        We've successfully received your request.
-    </p>
 
-    <p>
-        A member of <strong>South Bay Sites</strong> will review your information and get back to you within <strong>24 hours</strong>.
-    </p>
+<div class="check">
+✓
+</div>
 
-    <a class="home-btn" href="/">
-        Return to Home
-    </a>
+
+<h1>
+Thank You!
+</h1>
+
+
+<p>
+Your request has been successfully submitted.
+</p>
+
+
+<p>
+Our team at <strong>South Bay Sites</strong> will review your information and reach out within <strong>24 hours</strong> with the next steps.
+</p>
+
+
+<a href="/" class="home-btn">
+Return To Website →
+</a>
+
+
+<div class="footer">
+Helping South Bay businesses build websites that generate customers.
+</div>
+
 
 </div>
+
 
 </body>
 </html>
